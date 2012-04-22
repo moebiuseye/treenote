@@ -1,0 +1,10 @@
+setup.py
+treenote
+data/treenote.png
+treenote_modules/Events.py
+treenote_modules/__init__.py
+treenote_modules/charcoder.py
+treenote_modules/draft.py
+treenote_modules/files.py
+treenote_modules/main_UI.py
+treenote_modules/treenote.py
