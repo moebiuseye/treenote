@@ -32,7 +32,7 @@ setup(name = "treenote",
 	long_description = "Really long text here.",
     #This next part it for the Cheese Shop, look a little down the page.
     #classifiers = []
-	data_files=[("share/treenote/", ["data/content.conf", "data/action.conf", "data/0.tab"]), ("share/pixmaps/", ["data/treenote.png"])]
+	data_files=[("share/treenote/", ["data/content.conf", "data/action.conf", "data/0.tab", "data/1.tab"]), ("share/pixmaps/", ["data/treenote.png"])]
     )#TODO : Include configuration files.
 
 #os.chmod("/usr/tmp/treenote_exec", 0776)

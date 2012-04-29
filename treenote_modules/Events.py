@@ -97,7 +97,7 @@ def popup_action(self,item):
 	title=str(self.entry[clicked].get_text())
 	{
 		0: lambda: self.clipboard.set_text(text),
-		1: lambda: os.system(str(self.cmd)+" '"+str(title)+"' -e data/"+str(clicked)+".tab &"), #execute
+		1: lambda: os.system(str(self.cmd)+" '"+str(title)+"' -e "+os.path.expanduser('~')+"/.config/treenote/"+str(clicked)+".tab &"), #execute
 		# TODO : Be able to set the terminal to be used
 		#2: lambda: os.system("xdg-open '"+self.tabContent[clicked]+"' &")#open with
 	}[self.dropdown[clicked].get_active()]()

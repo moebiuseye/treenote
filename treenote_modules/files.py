@@ -22,12 +22,13 @@ def write_to_file(self):
 	print "write_to_file"
 	content=""
 	action=""
+	home = os.path.expanduser('~')
 	i=0
-	try: os.mkdir("data", 0775)
+	try: os.mkdir(home+"/.config/treenote", 0775)
 	except: print "Le dossier existe"
 	for entry in self.entry:
-		jesusthesavior=open("data/"+str(i)+".tab", "w",0)
-		os.chmod("data/"+str(i)+".tab", 0744)
+		jesusthesavior=open(home+"/.config/treenote/"+str(i)+".tab", "w",0)
+		os.chmod(home+"/.config/treenote/"+str(i)+".tab", 0744)
 		data=str(self.textview[i].get_buffer().get_text(self.textview[i].get_buffer().get_start_iter()
 		,self.textview[i].get_buffer().get_end_iter()))
 		jesusthesavior.write(data)
@@ -36,35 +37,36 @@ def write_to_file(self):
 		action+=encode(str(self.dropdown[i].get_active()))+"\n"
 		print "action :"+action
 		i+=1
-	jesusthesavior=open("data/content.conf", "w",0)
+	jesusthesavior=open(home+"/.config/treenote/content.conf", "w",0)
 	jesusthesavior.write(content)
-	jesusthesavior=open("data/action.conf", "w",0)
+	jesusthesavior=open(home+"/.config/treenote/action.conf", "w",0)
 	jesusthesavior.write(action)
 
 def retreive_from_file(self):
 	print "retreive_from_file"
-	try:
-		os.mkdir(".config/treenote", 0775)
-		os.cp("/usr/")
-	except:
-		print "Le dossier existe"
-		pass
-	if os.path.isfile("data/content.conf"):
-		jesusthecanopener=file("data/content.conf", "r+w",0)
+	home = os.path.expanduser('~')
+	if not os.path.isdir( home+"/.config/treenote" ) :
+		try: 
+			shutil.copytree("/usr/local/share/treenote", home+"/.config/treenote")
+		except :
+			print "Files couldn't be copied ! "
+			pass
+	if os.path.isfile(home+"/.config/treenote/content.conf"):
+		jesusthecanopener=file(home+"/.config/treenote/content.conf", "r+w",0)
 		raw_content=jesusthecanopener.read()
 		raw_content=decode(raw_content)
 		titles=raw_content.split("\n")
 		titles.pop(len(titles)-1)
-		if os.path.isfile("data/action.conf"):
-			jesusthecanopener=file("data/action.conf", "r+w",0)
+		if os.path.isfile(home+"/.config/treenote/action.conf"):
+			jesusthecanopener=file(home+"/.config/treenote/action.conf", "r+w",0)
 			raw_content=jesusthecanopener.read()
 			act=raw_content.split("\n")
 			act.pop(act.index(""))
 			for title in titles:
 				print title+"\n"
 				self.i+=1
-				if os.path.isfile("data/"+str(self.i)+".tab"):
-					jesusthecanopener=file("data/"+str(self.i)+".tab", "r+w",0)
+				if os.path.isfile(home+"/.config/treenote/"+str(self.i)+".tab"):
+					jesusthecanopener=file(home+"/.config/treenote/"+str(self.i)+".tab", "r+w",0)
 					content=str(jesusthecanopener.read())
 					buffer=gtk.TextBuffer()
 					buffer.set_text(content)
