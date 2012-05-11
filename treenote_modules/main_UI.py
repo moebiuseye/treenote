@@ -22,10 +22,11 @@ def set_buttons(self):
 	self.Close_button.set_image(closeimg)
 
 
-	self.debug_button.connect("clicked", self.debuger)
-	debugimg=gtk.Image()
-	debugimg.set_from_stock(gtk.STOCK_REFRESH, gtk.ICON_SIZE_MENU)
-	self.debug_button.set_image(debugimg)
+	if ( self.debug ):
+		self.debug_button.connect("clicked", self.debuger)
+		debugimg=gtk.Image()
+		debugimg.set_from_stock(gtk.STOCK_REFRESH, gtk.ICON_SIZE_MENU)
+		self.debug_button.set_image(debugimg)
 
 def set_notebook(self):
 	print "set_notebook"
@@ -40,7 +41,8 @@ def set_boxes(self):
 
 	self.hbox.pack_start(self.Add_button, False)
 	self.hbox.pack_start(gtk.Label())
-	self.hbox.pack_start(self.debug_button, False)
+	if ( self.debug ):
+		self.hbox.pack_start(self.debug_button, False)
 	self.hbox.pack_start(self.Close_button, False)
 
 

@@ -12,7 +12,7 @@ files = ["src/*"]
 
 
 setup(name = "treenote",
-	version = "2.2.1",
+	version = "2.2.2",
 	description = "yadda yadda",
 	author = "moebius_eye",
 	author_email = "moebius.eye@gmail.com",

@@ -19,10 +19,9 @@ import os
 import sys
 from subprocess import call
 
-
 class treenote:
 	def __init__(self):
-		self.debug = True #set to False on release!!!!
+		self.debug = False #set to False on release!!!!
 		settings = gtk.settings_get_default()
 
 		self.clipboard = gtk.clipboard_get()
